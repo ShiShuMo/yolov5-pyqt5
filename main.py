@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\untitled.ui'
-#
-# Created by: PyQt5 UI code generator 5.9.2
-#
-# WARNING! All changes made in this file will be lost!
 import sys
 import cv2
 import argparse
@@ -72,19 +67,39 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(847, 603)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)
+        self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(169, 10, 671, 551))
+        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.verticalLayout = QtWidgets.QVBoxLayout()
-        self.verticalLayout.setContentsMargins(-1, -1, 0, -1)
-        self.verticalLayout.setSpacing(80)
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(170, 25, 661, 531))
+        self.label.setObjectName("label")
+        self.widget = QtWidgets.QWidget(self.centralwidget)
+        self.widget.setGeometry(QtCore.QRect(10, 60, 152, 451))
+        self.widget.setObjectName("widget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.widget)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.pushButton_img = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_cam = QtWidgets.QPushButton(self.widget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton_cam.sizePolicy().hasHeightForWidth())
+        self.pushButton_cam.setSizePolicy(sizePolicy)
+        self.pushButton_cam.setMinimumSize(QtCore.QSize(150, 100))
+        self.pushButton_cam.setMaximumSize(QtCore.QSize(150, 100))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(12)
+        self.pushButton_cam.setFont(font)
+        self.pushButton_cam.setObjectName("pushButton_cam")
+        self.verticalLayout.addWidget(self.pushButton_cam)
+        self.pushButton_img = QtWidgets.QPushButton(self.widget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -97,8 +112,8 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         font.setPointSize(12)
         self.pushButton_img.setFont(font)
         self.pushButton_img.setObjectName("pushButton_img")
-        self.verticalLayout.addWidget(self.pushButton_img, 0, QtCore.Qt.AlignHCenter)
-        self.pushButton_video = QtWidgets.QPushButton(self.centralwidget)
+        self.verticalLayout.addWidget(self.pushButton_img)
+        self.pushButton_video = QtWidgets.QPushButton(self.widget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -111,19 +126,10 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         font.setPointSize(12)
         self.pushButton_video.setFont(font)
         self.pushButton_video.setObjectName("pushButton_video")
-        self.verticalLayout.addWidget(self.pushButton_video, 0, QtCore.Qt.AlignHCenter)
-        self.verticalLayout.setStretch(0, 1)
-        self.verticalLayout.setStretch(1, 1)
-        self.horizontalLayout.addLayout(self.verticalLayout)
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setObjectName("label")
-        self.horizontalLayout.addWidget(self.label)
-        self.horizontalLayout.setStretch(0, 1)
-        self.horizontalLayout.setStretch(1, 3)
-        self.horizontalLayout_2.addLayout(self.horizontalLayout)
+        self.verticalLayout.addWidget(self.pushButton_video)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 23))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 847, 22))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -132,15 +138,19 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        MainWindow.setTabOrder(self.pushButton_cam, self.pushButton_img)
+        MainWindow.setTabOrder(self.pushButton_img, self.pushButton_video)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "PyQt5+YOLOv5示例"))
-        self.pushButton_img.setText(_translate("MainWindow", "图片检测"))
-        self.pushButton_video.setText(_translate("MainWindow", "视频检测"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "深度学习模型检测工具"))
         self.label.setText(_translate("MainWindow", "TextLabel"))
+        self.pushButton_cam.setText(_translate("MainWindow", "摄像头输入检测"))
+        self.pushButton_img.setText(_translate("MainWindow", "图片文件检测"))
+        self.pushButton_video.setText(_translate("MainWindow", "视频文件检测"))
 
     def init_slots(self):
+        self.pushButton_cam.clicked.connect(self.button_cam_open)
         self.pushButton_img.clicked.connect(self.button_image_open)
         self.pushButton_video.clicked.connect(self.button_video_open)
         self.timer_video.timeout.connect(self.show_video_frame)
@@ -150,55 +160,74 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.label.setScaledContents(True)
         self.label.setPixmap(pix)
 
+    def init_status(self):
+        self.timer_video.stop()
+        self.cap.release()
+        self.label.clear()
+        self.init_logo()
+
     def button_image_open(self):
         print('button_image_open')
         name_list = []
 
         img_name, _ = QtWidgets.QFileDialog.getOpenFileName(self, "打开图片", "", "*.jpg;;*.png;;All Files(*)")
-        img = cv2.imread(img_name)
-        print(img_name)
-        showimg = img
-        with torch.no_grad():
-            img = letterbox(img, new_shape=self.opt.img_size)[0]
-            # Convert
-            img = img[:, :, ::-1].transpose(2, 0, 1)  # BGR to RGB, to 3x416x416
-            img = np.ascontiguousarray(img)
-            img = torch.from_numpy(img).to(self.device)
-            img = img.half() if self.half else img.float()  # uint8 to fp16/32
-            img /= 255.0  # 0 - 255 to 0.0 - 1.0
-            if img.ndimension() == 3:
-                img = img.unsqueeze(0)
-            # Inference
-            pred = self.model(img, augment=self.opt.augment)[0]
-            # Apply NMS
-            pred = non_max_suppression(pred, self.opt.conf_thres, self.opt.iou_thres, classes=self.opt.classes,
-                                       agnostic=self.opt.agnostic_nms)
-            print(pred)
-            # Process detections
-            for i, det in enumerate(pred):
-                if det is not None and len(det):
-                    # Rescale boxes from img_size to im0 size
-                    det[:, :4] = scale_coords(img.shape[2:], det[:, :4], showimg.shape).round()
+        if not img_name:
+            QtWidgets.QMessageBox.warning(self, u"Warning", u"打开图片失败", buttons=QtWidgets.QMessageBox.Ok,
+                                          defaultButton=QtWidgets.QMessageBox.Ok)
+            self.pushButton_video.setDisabled(False)
+            self.label.clear()
+            self.init_logo()
+        else:
+            img = cv2.imread(img_name)
+            print(img_name)
+            showimg = img
+            with torch.no_grad():
+                img = letterbox(img, new_shape=self.opt.img_size)[0]
+                # Convert
+                img = img[:, :, ::-1].transpose(2, 0, 1)  # BGR to RGB, to 3x416x416
+                img = np.ascontiguousarray(img)
+                img = torch.from_numpy(img).to(self.device)
+                img = img.half() if self.half else img.float()  # uint8 to fp16/32
+                img /= 255.0  # 0 - 255 to 0.0 - 1.0
+                if img.ndimension() == 3:
+                    img = img.unsqueeze(0)
+                # Inference
+                pred = self.model(img, augment=self.opt.augment)[0]
+                # Apply NMS
+                pred = non_max_suppression(pred, self.opt.conf_thres, self.opt.iou_thres, classes=self.opt.classes,
+                                           agnostic=self.opt.agnostic_nms)
+                print(pred)
+                # Process detections
+                for i, det in enumerate(pred):
+                    if det is not None and len(det):
+                        # Rescale boxes from img_size to im0 size
+                        det[:, :4] = scale_coords(img.shape[2:], det[:, :4], showimg.shape).round()
 
-                    for *xyxy, conf, cls in reversed(det):
-                        label = '%s %.2f' % (self.names[int(cls)], conf)
-                        name_list.append(self.names[int(cls)])
-                        plot_one_box(xyxy, showimg, label=label, color=self.colors[int(cls)], line_thickness=2)
+                        for *xyxy, conf, cls in reversed(det):
+                            label = '%s %.2f' % (self.names[int(cls)], conf)
+                            name_list.append(self.names[int(cls)])
+                            plot_one_box(xyxy, showimg, label=label, color=self.colors[int(cls)], line_thickness=2)
 
-        self.result = cv2.cvtColor(showimg, cv2.COLOR_BGR2BGRA)
-        self.result = cv2.resize(self.result, (640, 480), interpolation=cv2.INTER_AREA)
-        self.QtImg = QtGui.QImage(self.result.data, self.result.shape[1], self.result.shape[0], QtGui.QImage.Format_RGB32)
-        self.label.setPixmap(QtGui.QPixmap.fromImage(self.QtImg))
+            self.result = cv2.cvtColor(showimg, cv2.COLOR_BGR2BGRA)
+            self.result = cv2.resize(self.result, (640, 480), interpolation=cv2.INTER_AREA)
+            self.QtImg = QtGui.QImage(self.result.data, self.result.shape[1], self.result.shape[0],
+                                      QtGui.QImage.Format_RGB32)
+            self.label.setPixmap(QtGui.QPixmap.fromImage(self.QtImg))
 
     def button_video_open(self):
         video_name, _ = QtWidgets.QFileDialog.getOpenFileName(self, "打开视频", "", "*.mp4;;*.avi;;All Files(*)")
         flag = self.cap.open(video_name)
-        if flag == False:
-            QtWidgets.QMessageBox.warning(self, u"Warning", u"打开视频失败", buttons=QtWidgets.QMessageBox.Ok,defaultButton=QtWidgets.QMessageBox.Ok)
+        if not flag:
+            QtWidgets.QMessageBox.warning(self, u"Warning", u"打开视频失败", buttons=QtWidgets.QMessageBox.Ok,
+                                          defaultButton=QtWidgets.QMessageBox.Ok)
+            self.pushButton_video.setDisabled(False)
+            self.label.clear()
+            self.init_logo()
         else:
             self.timer_video.start(30)
+            self.pushButton_cam.setDisabled(False)
             self.pushButton_video.setDisabled(True)
-            self.pushButton_img.setDisabled(True)
+            self.pushButton_img.setDisabled(False)
 
     def show_video_frame(self):
         name_list = []
@@ -240,13 +269,84 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                                      QtGui.QImage.Format_RGB888)
             self.label.setPixmap(QtGui.QPixmap.fromImage(showImage))
 
+            if self.pushButton_img.clicked:
+                #self.init_status()
+                pass
+
         else:
-            self.timer_video.stop()
-            self.cap.release()
+            self.init_status()
+            self.pushButton_cam.setDisabled(False)
+            self.pushButton_video.setDisabled(True)
+            self.pushButton_img.setDisabled(False)
+
+    def button_cam_open(self):
+        self.cap = cv2.VideoCapture(0)
+        height = self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+        width = self.cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+        '''
+        #保存为本地文件
+        out = cv2.VideoWriter("./demo.mp4", cv2.VideoWriter_fourcc('D', 'I', 'V', 'X'), 15,
+                              (np.int(width), np.int(height)), True)
+        '''
+        flag, frame = self.cap.read()
+        print(flag)
+        if not flag:
+            QtWidgets.QMessageBox.warning(self, u"Warning", u"打开摄像头失败", buttons=QtWidgets.QMessageBox.Ok,
+                                          defaultButton=QtWidgets.QMessageBox.Ok)
             self.label.clear()
+            self.init_logo()
+        else:
+            self.timer_video.start(30)
+            self.pushButton_cam.setDisabled(True)
             self.pushButton_video.setDisabled(False)
             self.pushButton_img.setDisabled(False)
-            self.init_logo()
+
+    def show_cam_frame(self, img):
+        name_list = []
+        if img is not None:
+            showimg = img
+            with torch.no_grad():
+                img = letterbox(img, new_shape=self.opt.img_size)[0]
+                # Convert
+                img = img[:, :, ::-1].transpose(2, 0, 1)  # BGR to RGB, to 3x416x416
+                img = np.ascontiguousarray(img)
+                img = torch.from_numpy(img).to(self.device)
+                img = img.half() if self.half else img.float()  # uint8 to fp16/32
+                img /= 255.0  # 0 - 255 to 0.0 - 1.0
+                if img.ndimension() == 3:
+                    img = img.unsqueeze(0)
+                # Inference
+                pred = self.model(img, augment=self.opt.augment)[0]
+
+                # Apply NMS
+                pred = non_max_suppression(pred, self.opt.conf_thres, self.opt.iou_thres, classes=self.opt.classes,
+                                           agnostic=self.opt.agnostic_nms)
+                # Process detections
+                for i, det in enumerate(pred):  # detections per image
+                    if det is not None and len(det):
+                        # Rescale boxes from img_size to im0 size
+                        det[:, :4] = scale_coords(img.shape[2:], det[:, :4], showimg.shape).round()
+                        # Write results
+                        for *xyxy, conf, cls in reversed(det):
+                            label = '%s %.2f' % (self.names[int(cls)], conf)
+                            name_list.append(self.names[int(cls)])
+                            print(label)
+                            plot_one_box(xyxy, showimg, label=label, color=self.colors[int(cls)], line_thickness=2)
+
+            show = cv2.resize(showimg, (640, 480))
+            self.result = cv2.cvtColor(show, cv2.COLOR_BGR2RGB)
+            showImage = QtGui.QImage(self.result.data, self.result.shape[1], self.result.shape[0],
+                                     QtGui.QImage.Format_RGB888)
+            self.label.setPixmap(QtGui.QPixmap.fromImage(showImage))
+
+            if self.pushButton_img.clicked:
+                #self.init_status()
+                pass
+        else:
+            self.init_status()
+            self.pushButton_cam.setDisabled(True)
+            self.pushButton_video.setDisabled(False)
+            self.pushButton_img.setDisabled(False)
 
 
 if __name__ == '__main__':
